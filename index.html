@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>Mayuresh Naidu — Designer & Developer</title>
+  <meta name="description"
+    content="Personal portfolio of Mayuresh Naidu. Designer and software engineer in Toronto building across product, systems, and design." />
+  <meta property="og:title" content="Mayuresh Naidu — Designer & Developer" />
+  <meta property="og:description"
+    content="Designer and software engineer in Toronto building across product, systems, and design." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+
+  <main id="top">
+
+    <!-- ──────────────────────────────────────────────
+         TRINKET LAYER — Polaroid frames in the margins
+         ────────────────────────────────────────────── -->
+    <div class="trinket-layer" aria-hidden="true">
+
+      <!-- Near bio: left side (polaroid) -->
+      <div class="trinket trinket-photo trinket--margin"
+        style="top: 140px; left: calc(50% - 440px); width: 80px; transform: rotate(-6deg);">
+        <img src="/assets/trinkets/trinket-1.png" alt="" loading="lazy" />
+      </div>
+
+      <!-- Near bio: right side (polaroid with tape) -->
+      <div class="trinket trinket-photo trinket--margin"
+        style="top: 210px; right: calc(50% - 570px); width: 270px; transform: rotate(8deg);">
+        <div class="tape-effect" style="transform: translateX(-50%) rotate(12deg);"></div>
+        <img src="/assets/trinkets/trinket-2.png" alt="" loading="lazy" />
+      </div>
+
+      <!-- Near projects: left (polaroid) -->
+      <div class="trinket trinket-photo trinket--margin"
+        style="top: 680px; left: calc(50% - 560px); width: 210px; transform: rotate(-30deg);">
+        <img src="/assets/trinkets/trinket-3.png" alt="" loading="lazy" />
+      </div>
+
+      <!-- Near projects: right (polaroid with tape) -->
+      <div class="trinket trinket-photo trinket--margin"
+        style="top: 1000px; right: calc(50% - 480px); width: 150px; transform: rotate(6deg);">
+        <div class="tape-effect"></div>
+        <img src="/assets/trinkets/trinket-5.png" alt="" loading="lazy" />
+      </div>
+
+      <!-- Near work: right -->
+      <div class="trinket trinket-photo trinket--margin"
+        style="top: 1580px; right: calc(50% - 500px); width: 180px; transform: rotate(30deg);">
+        <img src="/assets/trinkets/trinket-4.png" alt="" loading="lazy" />
+      </div>
+
+      <!-- Lower left: small polaroid -->
+      <div class="trinket trinket-photo trinket--margin"
+        style="top: 2100px; left: calc(50% - 430px); width: 200px; transform: rotate(-50deg);">
+        <img src="/assets/trinkets/trinket-6.png" alt="" loading="lazy" />
+      </div>
+
+    </div>
+
+    <!-- ──────────────────────────────────────────────
+         BIO SECTION
+         ────────────────────────────────────────────── -->
+    <section class="section section--hero" id="bio">
+      <div class="column">
+
+        <!-- Profile photo — replace /assets/profile.jpg with your actual photo -->
+        <div class="bio-photo">
+          <img src="/assets/profile.jpg" alt="Mayuresh Naidu" />
+        </div>
+
+        <p class="bio">
+          <strong>Mayuresh Naidu</strong> is a designer and software engineer in Toronto, ON.
+          He is currently a member of the development team at <a
+            href="https://lodestone.pm"><strong>Lodestone</strong></a>,
+          working across full-stack systems, product design, and developer tooling.
+        </p>
+        <p class="bio">
+          He received his Bachelors degree in Computer Science from <a href="https://mitwpu.edu.in/"><strong>MIT
+              Pune</strong></a> and his PG Diploma in Web Development from <a href="https://humber.ca"><strong>Humber
+              Polytechnic</strong></a>.
+        </p>
+
+        <div class="social-links" role="list">
+          <a href="https://github.com/meiyo99" class="social-link" role="listitem">GitHub</a>
+          <span class="social-dot" aria-hidden="true">·</span>
+          <a href="https://www.linkedin.com/in/mayureshnaidu/" class="social-link" role="listitem">LinkedIn</a>
+          <span class="social-dot" aria-hidden="true">·</span>
+          <a href="https://x.com/notmeiyo" class="social-link" role="listitem">X / Twitter</a>
+          <span class="social-dot" aria-hidden="true">·</span>
+          <a href="mailto:mayureshnaiduu@gmail.com" class="social-link" role="listitem">Email</a>
+          <span class="social-dot" aria-hidden="true">·</span>
+          <a href="https://drive.google.com/file/d/1Tmryvo_VdUm5WSAfHJI4c4cM26BBunw4/view?usp=sharing"
+            class="social-link" role="listitem">Resume</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────
+         PROJECTS SECTION
+         ────────────────────────────────────────────── -->
+    <section class="section section--projects" id="projects">
+      <div class="column">
+        <h2 class="section-heading">Projects</h2>
+
+        <div class="project-list">
+
+          <a href="https://github.com/meiyo99/ssh-portfolio" class="project" id="project-ssh-portfolio">
+            <div class="project-thumb"><img src="/assets/icons/ssh.png" alt="" loading="lazy" /></div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-name">ssh-portfolio</span>
+                <span class="info-wrap">
+                  <button class="info-btn" type="button" aria-label="How to connect via SSH">ⓘ</button>
+                  <span class="info-tooltip" role="tooltip">type <code class="ssh-cmd"
+                      data-cmd="ssh ssh.meiyo.dev">ssh ssh.meiyo.dev</code> in your terminal</span>
+                </span>
+              </div>
+              <span class="project-desc">Interactive terminal portfolio accessible over SSH</span>
+            </div>
+          </a>
+
+          <a href="https://github.com/meiyo99/ShortsBlock" class="project" id="project-shortsblock">
+            <div class="project-thumb"><img src="/assets/icons/shortsblock.png" alt="" loading="lazy" /></div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-name">ShortsBlock</span>
+              </div>
+              <span class="project-desc">Chrome extension that kills youtube shorts at the network
+                level</span>
+            </div>
+          </a>
+
+          <a href="https://github.com/meiyo99" class="project" id="project-brickmmo">
+            <div class="project-thumb"><img src="/assets/icons/brickmmo.png" alt="" loading="lazy" /></div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-name">BrickMMO Applications</span>
+              </div>
+              <span class="project-desc">Searchable explorer for 200+ repos with Chart.js</span>
+            </div>
+          </a>
+
+          <a href="#" class="project" id="project-nuit-blanche">
+            <div class="project-thumb"><img src="/assets/icons/nuit-blanche.png" alt="" loading="lazy" /></div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-name">Nuit Blanche</span>
+              </div>
+              <span class="project-desc">Route planner for Toronto's Nuit Blanche</span>
+            </div>
+          </a>
+
+        </div>
+
+
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────
+         WORK SECTION
+         ────────────────────────────────────────────── -->
+    <section class="section section--work" id="work">
+      <div class="column">
+        <h2 class="section-heading">Work</h2>
+
+        <div class="work-list">
+
+          <div class="work-item">
+            <div class="work-icon">
+              <img src="/assets/icons/lodestone.jpeg" alt="" loading="lazy" />
+            </div>
+            <div class="work-body">
+              <div class="work-meta">
+                <span class="work-company">Lodestone</span>
+                <span class="work-period">Sep 2025 – present</span>
+              </div>
+              <span class="work-role">Full-Stack Developer</span>
+            </div>
+          </div>
+
+          <div class="work-item">
+            <div class="work-icon">
+              <img src="/assets/icons/gebbs.jpg" alt="" loading="lazy" />
+            </div>
+            <div class="work-body">
+              <div class="work-meta">
+                <span class="work-company">GeBBS Healthcare</span>
+                <span class="work-period">Sep 2021–Sep 2023</span>
+              </div>
+              <span class="work-role">Software Engineer</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────
+         EDUCATION SECTION
+         ────────────────────────────────────────────── -->
+    <section class="section section--education" id="education">
+      <div class="column">
+        <h2 class="section-heading">Education</h2>
+        <div class="work-list">
+
+          <div class="work-item">
+            <div class="work-icon">
+              <img src="/assets/icons/humber.jpg" alt="" loading="lazy" />
+            </div>
+            <div class="work-body">
+              <div class="work-meta">
+                <span class="work-company">Humber Polytechnic</span>
+                <span class="work-period">Jan 2025 – Dec 2025</span>
+              </div>
+              <span class="work-role">Post-Graduate Certificate in Web Development</span>
+            </div>
+          </div>
+
+          <div class="work-item">
+            <div class="work-icon">
+              <img src="/assets/icons/mit.jpg.avif" alt="" loading="lazy" />
+            </div>
+            <div class="work-body">
+              <div class="work-meta">
+                <span class="work-company">MIT ADT University</span>
+                <span class="work-period">2017–2021</span>
+              </div>
+              <span class="work-role">B.Tech, Computer Science</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────
+         VOLUNTEERING SECTION
+         ────────────────────────────────────────────── -->
+    <section class="section section--volunteering" id="volunteering">
+      <div class="column">
+        <h2 class="section-heading">Volunteering / In-person Events</h2>
+        <div class="work-list">
+
+          <div class="work-item">
+            <div class="work-icon">
+              <img src="/assets/icons/hackthebrain.jpeg" alt="" loading="lazy" />
+            </div>
+            <div class="work-body">
+              <div class="work-meta">
+                <span class="work-company">HackTheBrain</span>
+                <span class="work-period">2025</span>
+              </div>
+              <span class="work-role">Event Coordinator</span>
+            </div>
+          </div>
+
+          <div class="work-item">
+            <div class="work-icon">
+              <img src="/assets/icons/collision.jpg" alt="" loading="lazy" />
+            </div>
+            <div class="work-body">
+              <div class="work-meta">
+                <span class="work-company">Collision Conference</span>
+                <span class="work-period">2024</span>
+              </div>
+              <span class="work-role">Tech Support Volunteer</span>
+            </div>
+          </div>
+
+          <div class="work-item">
+            <div class="work-icon">
+              <img src="/assets/icons/toronto-tech-week.jpg" alt="" loading="lazy" />
+            </div>
+            <div class="work-body">
+              <div class="work-meta">
+                <span class="work-company">Toronto Tech Week</span>
+                <span class="work-period">2025</span>
+              </div>
+              <span class="work-role">PORCH x CSA Picnic</span>
+            </div>
+          </div>
+
+          <div class="work-item">
+            <div class="work-icon">
+              <img src="/assets/icons/toronto-tech-week.jpg" alt="" loading="lazy" />
+            </div>
+            <div class="work-body">
+              <div class="work-meta">
+                <span class="work-company">Toronto Tech Week</span>
+                <span class="work-period">2025</span>
+              </div>
+              <span class="work-role">Snooze: Vol 3 (5k)</span>
+            </div>
+          </div>
+
+          <div class="work-item">
+            <div class="work-icon">
+              <img src="/assets/icons/sentry.jpg" alt="" loading="lazy" />
+            </div>
+            <div class="work-body">
+              <div class="work-meta">
+                <span class="work-company">Sentry Workshops</span>
+                <span class="work-period">2025</span>
+              </div>
+              <span class="work-role">TypeScript AI</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────
+         HOBBIES SECTION
+         ────────────────────────────────────────────── -->
+    <section class="section section--hobbies" id="hobbies">
+      <div class="column">
+        <h2 class="section-heading">Things I Like</h2>
+        <p class="bio bio--secondary">Visiting museums, volunteering around the city, persuing graphic encyclopedias,
+          running for utility but not for fun, playing stardew valley, shopping on facebook marketplace, papa johns
+          garlic breadsticks, and tim hortons french vanilla
+        </p>
+        <img src="/assets/images/after-hobbies.jpeg" alt="" class="hobbies-image" loading="lazy" />
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ──────────────────────────────────────────────
+       FOOTER
+       ────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="column footer-inner">
+      <a href="https://github.com/meiyo99" class="footer-link">GitHub</a>
+      <a href="https://www.linkedin.com/in/mayureshnaidu/" class="footer-link">LinkedIn</a>
+      <a href="mailto:mayureshnaiduu@gmail.com" class="footer-link">Email</a>
+      <span class="footer-copy">© 2026 Mayuresh Naidu</span>
+    </div>
+  </footer>
+
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>

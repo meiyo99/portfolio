@@ -1,0 +1,624 @@
+/* ═══════════════════════════════════════════════════════════════
+   EDITORIAL PORTFOLIO — DESIGN TOKEN SYSTEM
+   "The Digital Manuscript"
+
+   Every value here traces to DESIGN.md §2–§7.
+   Zero borders. Zero shadows (except trinkets). Typography-first.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ───────────────────────────────
+   §2 COLORS
+   ─────────────────────────────── */
+:root {
+  --on-surface: #1a1c1c;
+  --on-surface-variant: #474747;
+  --on-surface-muted: #888888;
+  --surface: #ffffff;
+  --surface-container: #eeeeee;
+  --surface-container-low: #f3f3f4;
+  --on-secondary-fixed-variant: #3b3b3c;
+  --outline-variant: #c6c6c6;
+  --primary: #000000;
+
+  /* Ghost focus (§4) */
+  --ghost-focus: rgba(198, 198, 198, 0.20);
+}
+
+/* ───────────────────────────────
+   §3 TYPOGRAPHY
+   ─────────────────────────────── */
+:root {
+  --font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+  --font-handwritten: 'Caveat', cursive;
+
+  --display-sm: 2.25rem;
+  /* 36px */
+  --title-lg: 1.25rem;
+  /* 20px */
+  --title-md: 1rem;
+  /* 16px */
+  --title-sm: 0.875rem;
+  /* 14px */
+  --body-lg: 1rem;
+  /* 16px */
+  --body-sm: 0.875rem;
+  /* 14px */
+  --label-md: 0.75rem;
+  /* 12px */
+
+  --lh-display: 1.15;
+  --lh-body: 1.6;
+
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-bold: 700;
+}
+
+/* ───────────────────────────────
+   §4 SPACING — "White space is a physical element"
+   ─────────────────────────────── */
+:root {
+  --column-width: 560px;
+  --section-gap: 80px;
+  --subsection-gap: 48px;
+  --item-gap: 32px;
+}
+
+/* ───────────────────────────────
+   RESET & GLOBALS
+   ─────────────────────────────── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--body-lg);
+  line-height: var(--lh-body);
+  color: var(--on-surface);
+  background-color: var(--surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* §7: Left-aligned editorial "spine" */
+body,
+main,
+section,
+footer {
+  text-align: left;
+}
+
+/* Selection */
+::selection {
+  background: var(--on-surface);
+  color: var(--surface);
+}
+
+/* ───────────────────────────────
+   §4 GHOST FOCUS — Accessibility without clutter
+   ─────────────────────────────── */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ghost-focus);
+  outline-offset: 3px;
+}
+
+/* ───────────────────────────────
+   COLUMN — The 560px editorial spine
+   ─────────────────────────────── */
+.column {
+  max-width: var(--column-width);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   COMPONENTS
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ───────────────────────────────
+   SECTIONS — Spacing-only structure
+   ─────────────────────────────── */
+.section {
+  padding-block: var(--section-gap);
+}
+
+.section--projects {
+  padding-top: 0;
+}
+
+.section--work,
+.section--education,
+.section--volunteering,
+.section--hobbies {
+  padding-top: 0;
+}
+
+.section-heading {
+  font-size: var(--label-md);
+  font-weight: var(--weight-bold);
+  color: var(--on-surface-muted);
+  margin-bottom: var(--subsection-gap);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ───────────────────────────────
+   BIO SECTION (§3, §5)
+   ─────────────────────────────── */
+
+/* Profile photo — polaroid circle */
+.bio-photo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 32px;
+  background-color: var(--surface-container);
+  /* fallback when image missing */
+}
+
+.bio-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bio {
+  font-size: var(--body-lg);
+  line-height: var(--lh-body);
+  color: var(--on-surface);
+  max-width: 520px;
+  margin-bottom: 16px;
+}
+
+/* Inline bio links — bold + underline style (matching screenshot) */
+.bio a {
+  color: var(--on-surface);
+  font-weight: var(--weight-bold);
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 0, 0, 0.4);
+  transition: text-decoration-color 200ms ease;
+}
+
+.bio a:hover {
+  text-decoration-color: rgba(0, 0, 0, 0.9);
+  color: var(--on-surface);
+}
+
+/* §3: "Bold weights for emphasis" */
+.bio strong {
+  font-weight: var(--weight-bold);
+  color: var(--on-surface);
+}
+
+.bio--secondary {
+  color: var(--on-surface-variant);
+  margin-bottom: 24px;
+}
+
+/* §5 Chips: "separated by dots" */
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.social-link {
+  font-size: var(--label-md);
+  color: var(--on-surface-variant);
+  text-decoration: none;
+  font-weight: var(--weight-medium);
+  transition: color 200ms ease;
+}
+
+/* §2 Signature Textures: "ink reacting to touch" */
+.social-link:hover {
+  color: var(--on-surface);
+}
+
+.social-dot {
+  font-size: var(--label-md);
+  color: var(--on-surface-muted);
+  user-select: none;
+}
+
+/* ───────────────────────────────
+   PROJECT LIST (§5 — flex layout with thumbnail)
+   ─────────────────────────────── */
+.project-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.project {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  text-decoration: none;
+  color: inherit;
+  padding: 12px 16px;
+  margin-inline: -16px;
+  margin-bottom: 4px;
+  border-radius: 0;
+  transition: opacity 150ms ease;
+}
+
+.project-list:has(.project:hover) .project:not(:hover) {
+  opacity: 0.6;
+}
+
+/* 44×44 thumbnail placeholder */
+.project-thumb {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  /* background-color: var(--surface-container); */
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.project-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.project-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+/* ─── Info tooltip (ssh-portfolio) ─── */
+.info-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.info-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: default;
+  font-size: 13px;
+  line-height: 1;
+  color: var(--on-surface-muted);
+  display: inline-flex;
+  align-items: center;
+  transition: color 150ms ease;
+}
+
+.info-btn:hover {
+  color: var(--on-surface-variant);
+}
+
+.info-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 0;
+  background: var(--surface-container);
+  color: var(--on-surface-variant);
+  font-size: var(--label-md);
+  font-weight: var(--weight-normal);
+  padding: 8px 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 150ms ease, visibility 150ms ease;
+}
+
+.info-wrap:hover .info-tooltip,
+.info-wrap:focus-within .info-tooltip {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Bridge the 8px gap between button and tooltip so hover isn't lost in transit */
+.info-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 10px;
+}
+
+.ssh-cmd {
+  font-family: ui-monospace, 'SF Mono', Monaco, Consolas, monospace;
+  font-size: inherit;
+  background: rgba(0, 0, 0, 0.08);
+  padding: 1px 5px;
+  border-radius: 3px;
+  cursor: pointer;
+  color: var(--on-surface);
+  transition: background 150ms ease, color 150ms ease;
+  user-select: all;
+}
+
+.ssh-cmd:hover {
+  background: rgba(0, 0, 0, 0.14);
+}
+
+.ssh-cmd.copied {
+  color: var(--on-surface-muted);
+}
+
+.project-name {
+  font-size: var(--body-lg);
+  font-weight: var(--weight-bold);
+  color: var(--on-surface);
+}
+
+.project-year {
+  font-size: var(--body-lg);
+  color: var(--on-surface-variant);
+}
+
+.project-desc {
+  font-size: var(--body-sm);
+  color: #999999;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ───────────────────────────────
+   WORK SECTION
+   ─────────────────────────────── */
+.work-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.work-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.work-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 4px;
+  background-color: var(--surface-container);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--on-surface-muted);
+  overflow: hidden;
+}
+
+.work-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.work-body {
+  flex: 1;
+  padding-top: 2px;
+}
+
+.work-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2px;
+}
+
+.work-company {
+  font-size: var(--body-lg);
+  font-weight: var(--weight-bold);
+  color: var(--on-surface);
+}
+
+.work-period {
+  font-size: var(--body-sm);
+  color: var(--on-surface-variant);
+}
+
+.work-role {
+  font-size: var(--body-sm);
+  color: #999999;
+}
+
+/* ───────────────────────────────
+   HOBBIES IMAGE
+   ─────────────────────────────── */
+.hobbies-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-top: 24px;
+}
+
+/* ───────────────────────────────
+   FOOTER
+   ─────────────────────────────── */
+.site-footer {
+  padding-block: var(--section-gap);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  font-size: var(--label-md);
+  font-weight: var(--weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--on-surface-muted);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+.footer-link:hover {
+  color: var(--on-surface-variant);
+  text-decoration: underline;
+}
+
+.footer-copy {
+  font-size: var(--label-md);
+  color: var(--on-surface-muted);
+  margin-left: auto;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   §6 TRINKET AESTHETIC — Polaroid frames in the margins
+   ═══════════════════════════════════════════════════════════════ */
+
+.trinket-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Base trinket — position only */
+.trinket {
+  position: absolute;
+}
+
+/* Polaroid frame style */
+.trinket-photo {
+  position: absolute;
+  /* background: white; */
+  /* padding: 4px; */
+  /* padding-bottom: 12px; */
+  /* box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.10), */
+  /* 0 2px 4px -2px rgba(0, 0, 0, 0.10); */
+  /* border: 1px solid #f0f0f0; */
+  /* z-index: 10; */
+  pointer-events: none;
+}
+
+.trinket-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: grayscale(100%) contrast(1.1) brightness(1.05);
+}
+
+/* Tape strip across top of polaroid */
+.tape-effect {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 15px;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(1px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  z-index: 11;
+}
+
+/* Decorative doodle SVG */
+.trinket-doodle {
+  position: absolute;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LINKS — §2 Signature Textures, §5 Buttons
+   ═══════════════════════════════════════════════════════════════ */
+a {
+  color: var(--on-surface);
+  text-decoration: none;
+  transition: color 200ms ease, text-decoration-color 200ms ease;
+}
+
+/* §5: Primary button — "Bold text with underline only on hover"
+   Block-level links (.project) override this with tonal hover instead. */
+a:not(.project):not(.social-link):not(.footer-link):not(.bio a):hover {
+  text-decoration-line: underline;
+  text-decoration-color: var(--on-secondary-fixed-variant);
+  color: var(--on-secondary-fixed-variant);
+}
+
+/* ───────────────────────────────
+   RESPONSIVE
+   ─────────────────────────────── */
+@media (max-width: 600px) {
+  :root {
+    --section-gap: 56px;
+    --subsection-gap: 32px;
+  }
+
+  /* §6: "On mobile (< 600px), trinkets in margins should be hidden" */
+  .trinket--margin {
+    display: none;
+  }
+
+  .column {
+    padding-inline: 20px;
+  }
+
+  .project {
+    margin-inline: -16px;
+  }
+
+  .work-meta {
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+
+@media (max-width: 400px) {
+  :root {
+    --section-gap: 48px;
+  }
+}
+
+/* ───────────────────────────────
+   PRINT — For the "manuscript" feel
+   ─────────────────────────────── */
+@media print {
+  .trinket-layer {
+    display: none;
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__stitch__list_projects",
+      "mcp__stitch__get_screen",
+      "mcp__plugin_context-mode_context-mode__fetch_and_index",
+      "mcp__plugin_context-mode_context-mode__search",
+      "Bash(npm run:*)",
+      "Bash(textutil -convert txt -stdout \"/Users/mayureshnaidu/Desktop/Portfolio Content.rtf\")"
+    ]
+  }
+}
