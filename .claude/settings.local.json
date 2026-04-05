@@ -6,7 +6,9 @@
       "mcp__plugin_context-mode_context-mode__fetch_and_index",
       "mcp__plugin_context-mode_context-mode__search",
       "Bash(npm run:*)",
-      "Bash(textutil -convert txt -stdout \"/Users/mayureshnaidu/Desktop/Portfolio Content.rtf\")"
+      "Bash(textutil -convert txt -stdout \"/Users/mayureshnaidu/Desktop/Portfolio Content.rtf\")",
+      "Bash(npm install:*)",
+      "Bash(node:*)"
     ]
   }
 }

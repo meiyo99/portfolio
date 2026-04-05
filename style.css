@@ -532,7 +532,11 @@ footer {
   /* 0 2px 4px -2px rgba(0, 0, 0, 0.10); */
   /* border: 1px solid #f0f0f0; */
   /* z-index: 10; */
-  pointer-events: none;
+  pointer-events: auto;
+}
+
+.trinket-photo:hover {
+  z-index: 100;
 }
 
 .trinket-photo img {
@@ -540,6 +544,13 @@ footer {
   width: 100%;
   height: auto;
   filter: grayscale(100%) contrast(1.1) brightness(1.05);
+  transition: filter 450ms ease, transform 450ms ease;
+  transform-origin: center center;
+}
+
+.trinket-photo:hover img {
+  filter: none;
+  transform: scale(1.1);
 }
 
 /* Tape strip across top of polaroid */
@@ -622,3 +633,25 @@ a:not(.project):not(.social-link):not(.footer-link):not(.bio a):hover {
     display: none;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   INTERACTIONS
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── SSH typewriter cursor ─────────────────────────────────── */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.ssh-cmd.typing::after {
+  content: '|';
+  font-weight: 300;
+  margin-left: 1px;
+  animation: cursor-blink 600ms step-end infinite;
+}
+
+.ssh-cmd.typed::after {
+  content: '';
+}
+
