@@ -133,6 +133,10 @@ function initTrinketPhysics() {
     lastScrollY = currentScrollY;
 
     for (const s of states) {
+      // Freeze physics while this trinket's bubble is open so the element
+      // doesn't drift away from a stationary cursor and fire spurious mouseleave.
+      if (s.el === physicsLockedTrinket) continue;
+
       // ── Scroll inertia ──────────────────────────────────────────────────
       s.vy += (rawDelta - s.vy) * SPRING;
       s.vy *= DAMPING;
@@ -168,6 +172,10 @@ initTrinketPhysics();
 
 // Single shared audio ref so only one trinket plays at a time
 let currentAudio = null;
+
+// When a bubble is open, freeze that trinket's physics so the bubble
+// doesn't drift away from a stationary cursor and fire spurious mouseleave.
+let physicsLockedTrinket = null;
 
 function buildAudioPlayer(trinket) {
   const src = trinket.dataset.bubbleAudio;
@@ -325,6 +333,7 @@ function initTrinketBubbles() {
   function hideBubble() {
     clearTimeout(showTimer);
     clearTimeout(hideTimer);
+    physicsLockedTrinket = null;
     if (activeBubble) { activeBubble.remove(); activeBubble = null; }
     if (activeTrinket) { delete activeTrinket.dataset.bubbleOpen; activeTrinket = null; }
   }
@@ -351,6 +360,7 @@ function initTrinketBubbles() {
 
     activeBubble = bubble;
     activeTrinket = trinket;
+    physicsLockedTrinket = trinket;
     trinket.dataset.bubbleOpen = '1';
   }
 
