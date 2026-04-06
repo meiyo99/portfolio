@@ -144,7 +144,6 @@ footer {
 }
 
 .section--work,
-.section--education,
 .section--volunteering,
 .section--hobbies {
   padding-top: 0;
@@ -194,7 +193,7 @@ footer {
   color: var(--on-surface);
   font-weight: var(--weight-bold);
   text-decoration: underline;
-  text-decoration-color: rgba(0, 0, 0, 0.4);
+  text-decoration-color: rgba(0, 0, 0, 0.198);
   transition: text-decoration-color 200ms ease;
 }
 
@@ -263,7 +262,7 @@ footer {
 }
 
 .project-list:has(.project:hover) .project:not(:hover) {
-  opacity: 0.6;
+  opacity: 0.3;
 }
 
 /* 44×44 thumbnail placeholder */
@@ -660,4 +659,132 @@ a:not(.project):not(.social-link):not(.footer-link):not(.bio a):hover {
 
 .ssh-cmd.typed::after {
   content: '';
+}
+
+/* ─── Trinket speech bubbles (iMessage style) ───────────────────────────── */
+
+/* Clickable trinkets */
+.trinket-photo[data-bubble-text] {
+  cursor: pointer;
+}
+
+.trinket-bubble {
+  position: absolute;
+  width: max-content;
+  max-width: 160px;
+  padding: 10px 14px;
+  background: #278EFF;
+  color: #ffffff;
+  font-family: -apple-system, 'SF Pro Text', ui-sans-serif, sans-serif;
+  font-size: 14px;
+  line-height: 1.35;
+  font-weight: 400;
+  white-space: normal;
+  word-break: normal;
+  border-radius: 18px;
+  z-index: 300;
+  overflow: visible;
+
+  /* Left-margin default: anchor to trinket's top-left corner */
+  left: -100px;
+  right: auto;
+  top: auto;
+  bottom: calc(100% + 15px);
+
+  /* Scale-up from bottom-left (tail anchor) */
+  opacity: 0;
+  transform: scale(0.92) rotate(-4deg);
+  transform-origin: bottom left;
+  transition: opacity 150ms ease-out, transform 150ms ease-out;
+  pointer-events: none;
+}
+
+/* Right-margin variant: anchor to trinket's top-right corner */
+.trinket-bubble--right {
+  left: auto;
+  right: -70px;
+  transform-origin: bottom right;
+  transform: scale(0.92) rotate(4deg);
+}
+
+.trinket-bubble.is-open {
+  opacity: 1;
+  transform: scale(1) rotate(-4deg);
+  pointer-events: auto;
+}
+
+.trinket-bubble--right.is-open {
+  transform: scale(1) rotate(4deg);
+}
+
+/* Inline SVG tail injected by buildBubble() */
+.trinket-bubble-tail {
+  position: absolute;
+  bottom: -11px;
+  display: block;
+}
+
+/* Inline link — same font as bubble text, just underlined */
+.trinket-bubble-link {
+  color: #ffffff;
+  font-size: inherit;
+  font-weight: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.55);
+  text-underline-offset: 2px;
+}
+
+.trinket-bubble-link:hover {
+  text-decoration-color: rgba(255, 255, 255, 0.95);
+}
+
+/* Audio player inside bubble */
+.trinket-bubble-player {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 9px;
+}
+
+.trinket-bubble-play-btn {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  font-size: 9px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 120ms;
+}
+
+.trinket-bubble-play-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.trinket-bubble-progress {
+  flex: 1;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.trinket-bubble-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: #ffffff;
+}
+
+/* Bubbles are irrelevant on mobile (trinkets are hidden) */
+@media (max-width: 600px) {
+  .trinket-bubble {
+    display: none;
+  }
 }
