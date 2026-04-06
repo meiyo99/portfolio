@@ -13,10 +13,75 @@ function syncTrinketLayer() {
   layer.style.height = document.body.scrollHeight + 'px';
 }
 
-window.addEventListener('load', syncTrinketLayer);
-window.addEventListener('resize', syncTrinketLayer);
+// ─── Trinket section anchoring ────────────────────────────────────────────────
+// Each trinket's top is computed from its anchor section so placement stays
+// correct even when content height changes (font loading, images, edits).
+function positionTrinkets() {
+  // Trinkets are display:none on mobile — nothing to do
+  if (window.innerWidth < 600) return;
 
-const resizeObserver = new ResizeObserver(syncTrinketLayer);
+  const trinkets = Array.from(document.querySelectorAll('.trinket-photo'));
+  if (!trinkets.length) return;
+
+  // document-top of an element (accounts for current scroll position)
+  function docTop(el) {
+    return el.getBoundingClientRect().top + window.scrollY;
+  }
+
+  const bio         = document.querySelector('#bio');
+  const projects    = document.querySelector('#projects');
+  const projectList = document.querySelector('#projects .project-list') ?? projects;
+  const work        = document.querySelector('#work');
+  const education   = document.querySelector('#education');
+  const hobbies     = document.querySelector('#hobbies');
+
+  // Anchor map (trinket index → top resolver)
+  // DOM order in index.html: 0=bio-left, 1=bio-right, 2=projects-left,
+  //                          3=projects-right, 4=work-right, 5=hobbies-left
+  const resolvers = [
+    // 0 — trinket-1: vertically centred with bio
+    () => bio
+      ? docTop(bio) + (bio.offsetHeight - trinkets[0].offsetHeight) / 2
+      : null,
+
+    // 1 — trinket-2: ~40px above projects heading
+    () => projects ? docTop(projects) - 40 : null,
+
+    // 2 — trinket-3: bottom edge of the projects list
+    () => projectList
+      ? docTop(projectList) + projectList.offsetHeight - trinkets[2].offsetHeight
+      : null,
+
+    // 3 — trinket-4: vertically centred with work
+    () => work
+      ? docTop(work) + (work.offsetHeight - trinkets[3].offsetHeight) / 2
+      : null,
+
+    // 4 — trinket-5: ~20px above education heading
+    () => education ? docTop(education) - 20 : null,
+
+    // 5 — trinket-6: vertically centred with hobbies
+    () => hobbies
+      ? docTop(hobbies) + (hobbies.offsetHeight - trinkets[5].offsetHeight) / 2
+      : null,
+  ];
+
+  resolvers.forEach((resolve, i) => {
+    if (!trinkets[i]) return;
+    const top = resolve();
+    if (top !== null) trinkets[i].style.top = `${top}px`;
+  });
+}
+
+function syncAll() {
+  syncTrinketLayer();
+  positionTrinkets();
+}
+
+window.addEventListener('load', syncAll);
+window.addEventListener('resize', syncAll);
+
+const resizeObserver = new ResizeObserver(syncAll);
 resizeObserver.observe(document.body);
 
 // ─── Trinket scroll-inertia + independent float physics ──────────────────────
@@ -24,16 +89,16 @@ function initTrinketPhysics() {
   if (prefersReducedMotion) return;
 
   // ── Scroll inertia constants ──────────────────────────────────────────────
-  const SPRING       = 0.08;   // How aggressively trinket vy chases scroll velocity
-  const DAMPING      = 0.88;   // Velocity multiplier per frame — controls coast distance
-  const MAX_VELOCITY = 18;     // px/frame cap — prevents teleporting on fast flings
-  const MAX_OFFSET   = 120;    // px — max drift from originTop in either direction
+  const SPRING       = 0.10;   // How aggressively trinket vy chases scroll velocity
+  const DAMPING      = 0.90;   // Velocity multiplier per frame — controls coast distance
+  const MAX_VELOCITY = 24;     // px/frame cap — prevents teleporting on fast flings
+  const MAX_OFFSET   = 200;    // px — max drift from originTop in either direction
 
   // ── Independent float constants ───────────────────────────────────────────
-  const FLOAT_BASE   = 1.2;    // px — minimum bob amplitude (always-on gentle drift)
-  const FLOAT_MAX    = 10;     // px — amplitude ceiling when actively scrolling
-  const FLOAT_BOOST  = 0.35;   // how much scroll |vy| charges float amplitude
-  const FLOAT_DECAY  = 0.997;  // amplitude multiplier per frame (~4s half-life at 60fps)
+  const FLOAT_BASE   = 5;      // px — minimum bob amplitude (always-on gentle drift)
+  const FLOAT_MAX    = 22;     // px — amplitude ceiling when actively scrolling
+  const FLOAT_BOOST  = 0.50;   // how much scroll |vy| charges float amplitude
+  const FLOAT_DECAY  = 0.998;  // amplitude multiplier per frame (~4s half-life at 60fps)
 
   const trinkets = Array.from(document.querySelectorAll('.trinket-photo'));
   if (!trinkets.length) return;
