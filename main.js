@@ -1,5 +1,8 @@
+import { inject } from '@vercel/analytics';
+inject();
+
 /* ═══════════════════════════════════════
-   MAIN.JS — Interactions
+  MAIN.JS — Interactions
    ═══════════════════════════════════════ */
 
 import { prepareWithSegments, layoutWithLines } from '@chenglou/pretext';
@@ -224,7 +227,7 @@ function buildAudioPlayer(trinket) {
     e.stopPropagation();
     if (currentAudio && currentAudio !== audio) currentAudio.pause();
     if (audio.paused) {
-      audio.play().catch(() => {});
+      audio.play().catch(() => { });
       currentAudio = audio;
       btn.textContent = '⏸';
       startProgress();
