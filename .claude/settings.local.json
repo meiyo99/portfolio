@@ -12,7 +12,9 @@
       "Skill(prompt-optimizer)",
       "Bash(mkdir -p /Users/mayureshnaidu/Documents/Projects/portfolio-2/public)",
       "Bash(mv /Users/mayureshnaidu/Documents/Projects/portfolio-2/assets/ComeDown-AndersonPaak.mp3 /Users/mayureshnaidu/Documents/Projects/portfolio-2/public/ComeDown-AndersonPaak.mp3)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:codepen.io)",
+      "Bash(grep -v '^$')"
     ]
   }
 }

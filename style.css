@@ -590,6 +590,135 @@ a:not(.project):not(.social-link):not(.footer-link):not(.bio a):hover {
   color: var(--on-secondary-fixed-variant);
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   DARK THEME
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ───────────────────────────────
+   §2 DARK TOKEN OVERRIDES
+   ─────────────────────────────── */
+[data-theme="dark"] {
+  --on-surface: #e8e8e8;
+  --on-surface-variant: #a0a0a0;
+  --on-surface-muted: #555555;
+  --surface: #0f0f0f;
+  --surface-container: #1a1a1a;
+  --surface-container-low: #161616;
+  --on-secondary-fixed-variant: #b0b0b0;
+  --outline-variant: #2e2e2e;
+  --primary: #ffffff;
+  --ghost-focus: rgba(100, 100, 100, 0.30);
+}
+
+/* Hardcoded rgba(0,0,0,…) values that can't use tokens — override for dark */
+[data-theme="dark"] .bio a {
+  text-decoration-color: rgba(255, 255, 255, 0.20);
+}
+
+[data-theme="dark"] .bio a:hover {
+  text-decoration-color: rgba(255, 255, 255, 0.80);
+}
+
+[data-theme="dark"] .ssh-cmd {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .ssh-cmd:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* Slightly dim trinkets in dark mode so they don't blow out */
+[data-theme="dark"] .trinket-photo img {
+  filter: grayscale(100%) contrast(1.1) brightness(0.85);
+}
+
+[data-theme="dark"] .trinket-photo:hover img {
+  filter: none;
+}
+
+/* ───────────────────────────────
+   THEME FLASH OVERLAY
+   ─────────────────────────────── */
+#theme-flash {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  will-change: opacity;
+}
+
+/* ───────────────────────────────
+   PULL CORD THEME TOGGLE
+   ─────────────────────────────── */
+.pull-cord-wrap {
+  position: fixed;
+  top: 0;
+  right: 500px;
+  z-index: 100;
+}
+
+.pull-cord {
+  display: block;
+  cursor: grab;
+  touch-action: none;
+  will-change: transform;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  background: transparent;
+  /* Light-mode: wide lateral shadow — cord lit from the left */
+  filter: drop-shadow(100px 2px 1px rgba(0, 0, 0, .25));
+}
+
+[data-theme="dark"] .pull-cord {
+  filter: drop-shadow(3px 2px 3px rgba(0, 0, 0, .5));
+}
+
+.pull-cord:active {
+  cursor: grabbing;
+}
+
+.pull-cord:focus-visible {
+  outline: 2px solid var(--on-surface-variant);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.pull-cord-hint {
+  position: absolute;
+  left: 15px;
+  top: 150px;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+
+.pull-cord-hint.dismissed {
+  opacity: 0;
+}
+
+.cord-hint-arrow {
+  color: var(--on-surface-muted);
+  flex-shrink: 0;
+}
+
+.cord-hint-text {
+  font-family: var(--font-handwritten);
+  font-size: 16px;
+  line-height: 1;
+  color: var(--on-surface-muted);
+}
+
+@media (max-width: 600px) {
+  .pull-cord-hint {
+    display: none;
+  }
+}
+
 /* ───────────────────────────────
    RESPONSIVE
    ─────────────────────────────── */
