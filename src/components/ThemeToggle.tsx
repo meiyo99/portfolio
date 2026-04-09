@@ -44,6 +44,7 @@ export default function ThemeToggle({ isDark, onToggle }: ThemeToggleProps) {
   const flashingRef = useRef<boolean>(false)
   const isDarkRef = useRef<boolean>(isDark)
   isDarkRef.current = isDark
+  const cordAudioRef = useRef<HTMLAudioElement | null>(null)
   const [hintDismissed, setHintDismissed] = useState(false)
 
   // ── Bootstrap ──────────────────────────────────────────────────────
@@ -185,6 +186,13 @@ export default function ThemeToggle({ isDark, onToggle }: ThemeToggleProps) {
     anchorYRef.current = 0
 
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    if (!prefersReduced) {
+      if (!cordAudioRef.current) cordAudioRef.current = new Audio('/audios/cord-pull.mp3')
+      cordAudioRef.current.currentTime = 0
+      cordAudioRef.current.play().catch(() => {})
+    }
+
     const overlay = document.getElementById('theme-flash') as HTMLDivElement | null
 
     if (prefersReduced || !overlay) {

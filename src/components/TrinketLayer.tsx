@@ -153,6 +153,7 @@ export default function TrinketLayer() {
     if (!trinkets.length) return
 
     const audioCache = bubbleAudioCache.current
+    let bubbleSoundAudio: HTMLAudioElement | null = null
 
     function buildAudioPlayer(trinket: HTMLElement): HTMLElement | null {
       const src = trinket.dataset.bubbleAudio
@@ -305,6 +306,12 @@ export default function TrinketLayer() {
 
     function showBubble(trinket: HTMLElement) {
       hideBubble()
+
+      if (!prefersReducedMotion) {
+        if (!bubbleSoundAudio) bubbleSoundAudio = new Audio('/audios/message-bubbles.mp3')
+        bubbleSoundAudio.currentTime = 0
+        bubbleSoundAudio.play().catch(() => {})
+      }
 
       const bubble = buildBubble(trinket)
       trinket.appendChild(bubble)
