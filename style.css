@@ -79,6 +79,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -89,7 +90,6 @@ body {
   background-color: var(--surface);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
   position: relative;
 }
 
@@ -652,9 +652,9 @@ a:not(.project):not(.social-link):not(.footer-link):not(.bio a):hover {
    PULL CORD THEME TOGGLE
    ─────────────────────────────── */
 .pull-cord-wrap {
-  position: fixed;
+  position: absolute;
   top: 0;
-  right: 500px;
+  right: 300px;
   z-index: 100;
 }
 
