@@ -745,6 +745,17 @@ a:not(.project):not(.social-link):not(.footer-link):not(.bio a):hover {
     flex-direction: column;
     gap: 2px;
   }
+
+  .pull-cord-wrap {
+    position: fixed;
+    top: 0;
+    right: 55px;
+  }
+
+  .pull-cord {
+    /* transform: rotate(-90deg); */
+    /* transform-origin: top right; */
+  }
 }
 
 @media (max-width: 400px) {
