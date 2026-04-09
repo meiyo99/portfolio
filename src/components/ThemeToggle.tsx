@@ -245,7 +245,7 @@ export default function ThemeToggle({ isDark, onToggle }: ThemeToggleProps) {
           <path d="M 36 44 C 0 45, 4 22, 10 7" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
           <path d="M 4 10 L 10 4 L 16 10" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-        <span className="cord-hint-text">turn the lights off</span>
+        <span className="cord-hint-text">pull on this</span>
       </div>
     </div>
   )
